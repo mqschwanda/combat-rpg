@@ -17,252 +17,125 @@
 			<!-- Header -->
 			<div class="page-header text-center">
     			<h1>Combat RPG</h1>
-  			</div>
+  			</div>	<!-- Header -->
 
-			<!-- Selected Players -->
-			<div class="row">	
-				<div class="col-xs-12">
-					<div class="panel panel-default">
-				 		<div id="toon-field" class="panel-body">
-				 			<div class="col-xs-3">
-				 				<img id="selected-img-player" class="img-responsive center-block alert alert-success" src="http://placehold.it/200x200">
-				 				<h5 id="selected-name-player" class="text-center hide-xs">#selected-name-player</h5>
-					  		</div>
-					  		<div class="col-xs-9">
-					 			<div class="col-xs-4">	
-					 				<img id="selected-img-enemy-1" class="hide-xs img-responsive center-block alert alert-danger" src="http://placehold.it/200x200">
-					 				<h5 id="selected-name-enemy-1" class="text-center">#selected-name-enemy-1</h5>
-					 			</div>	
-					 			<div class="col-xs-4">	
-					 				<img id="selected-img-enemy-2" class="hide-xs img-responsive center-block alert alert-danger" src="http://placehold.it/200x200">
-					 				<h5 id="selected-name-enemy-2" class="text-center">#selected-name-enemy-3</h5>
-					 			</div>	
-					 			<div class="col-xs-4">	
-					 				<img id="selected-img-enemy-3" class="hide-xs img-responsive center-block alert alert-danger" src="http://placehold.it/200x200">
-					 				<h5 id="selected-name-enemy-3" class="text-center">#selected-name-enemy-3</h5>
-					 			</div>
-					  		</div>
-					  		<button id="start-game" class="btn btn-primary btn-block"><span class="glyphicon"></span>Start Game</button>
-					  	</div>
-					</div>
-				</div> 
-			</div> <!-- Selected Players -->
+
+
 			
-			<!-- MSG Box -->
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="panel-group">
-						<div class="panel panel-default">
-					 		<div class="panel-body">
-					 			<h4 id="msg-box" class="text-center">#msg-box</h4>
-						  	</div>
-						</div>
-					</div>
-				</div>
-			</div> 	<!-- MSG Box -->
-
-
-			<div class="row">
-
-				<!-- Show Player Stats -->
-				<div class="col-xs-12 col-md-4">
+			<div id="selector-box" class="row">
+				<!-- toon stats -->
+				<div class="col-xs-12 col-md-3">
 					<div class="panel panel-default">
 				 		<div class="panel-body">
 				 			<div class="col-xs-6 col-md-12">
-				 				<img id="show-player-img" class="img-responsive center-block" src="http://placehold.it/200x200">
+				 				<img id="print-toon-img" class="img-responsive center-block" src="http://placehold.it/200x200">
 				 			</div>
 				 			<div class="col-xs-6 col-md-12">
-
-				 				<div class="col-xs-12">
-									<h5>Name:</h5>
-								</div>
-				 				<div class="col-xs-12">
-									<div id="show-player-name" class="text-center">#show-player-name</div>
-								</div>
-				 				<div class="col-xs-12">
-									<h5>Hit Points:</h5>
-								</div>
-								<div class="col-xs-12">
-									<div id="show-player-health" class="text-center">#show-player-health</div>
-								</div>
-				 				<div class="col-xs-12">
-									<h5>Attack Points:</h5>
-								</div>
-								<div class="col-xs-12">
-									<div id="show-player-attack" class="text-center">#show-player-attack</div>
-								</div>
-				 				<div class="col-xs-12">
-									<h5>Counter Attack Points:</h5>
-								</div>
-								<div class="col-xs-12">
-									<div id="show-player-counter" class="text-center">#show-player-counter</div>
-								</div>
-				 				<button id="show-player" class="btn btn-success btn-block"><span class="glyphicon glyphicon-plus-sign"></span>Select Player</button>
+				 			<div><h4 id="print-toon-name" class="text-center">Name</h4></div>
+				 					<table class="table table-condensed text-center">
+					 					<tbody>
+					 						<tr>
+					 							<td><span class="badge"><h5 id="print-toon-health">Health: XX</h5></span></td>
+					 							<td><span class="badge"><h5 id="print-toon-defense">Defense: XX</h5></span></td>
+					 						</tr>
+					 						<tr>
+					 							<td><span class="badge"><h5 id="print-toon-strength">Strength: XX</h5></span></td>
+					 							<td><span class="badge"><h5 id="print-toon-agility"">Agility: XX</h5></span></td>
+					 						</tr>
+					 					</tbody>
+					 				</table>
+					 			<button id="start-game" class="btn btn-primary btn-block"><span class="glyphicon"></span>Select Player</button>
 				 			</div>
-
 					  	</div>
 					</div>
 				</div>
-	
-
-				<!-- Player Selector -->
-				<div class="col-xs-12 col-md-8">
+				<!-- toon field -->
+				<div class="col-xs-12 col-md-9">
 					<div class="panel panel-default">
-				 		<div class="panel-body">
-				 			<div class="col-xs-4 col-md-3">
-				 				<img id="buzz-lightyear" class="img-responsive selector-img" src="assets/images/buzz-lightyear.png">
-					  		</div> 
-					  		<div class="col-xs-4 col-md-3">
-				 				<img  id="adam-west" class="img-responsive selector-img" src="assets/images/adam-west.png">
-					  		</div>
-					  		<div id="mark" class="col-xs-4 col-md-3">
-				 				<img  id="pikachu" class="img-responsive selector-img" src="assets/images/pikachu.png">
-					  		</div>
-					  		<div class="col-xs-4 col-md-3">
-				 				<img  id="simba" class="img-responsive selector-img" src="assets/images/simba.png">
-					  		</div>
-					  		<div class="col-xs-4 col-md-3">
-				 				<img  id="yoshi" class="img-responsive selector-img" src="assets/images/yoshi.png">
-					  		</div>
-					  		<div class="col-xs-4 col-md-3">
-				 				<img  id="captain-america" class="img-responsive selector-img" src="assets/images/captain-america.png">
-					  		</div>
-					  		<div class="col-xs-4 col-md-3">
-				 				<img  id="bowser" class="img-responsive selector-img" src="assets/images/bowser.png">
-					  		</div>
-					  		<div class="col-xs-4 col-md-3">
-				 				<img  id="bender" class="img-responsive selector-img" src="assets/images/bender.png">
-					  		</div>
-					  		<div class="col-xs-4 col-md-3">
-				 				<img  id="archer" class="img-responsive selector-img" src="assets/images/archer.png">
-					  		</div>
-					  		<div class="col-xs-4 col-md-3">
-				 				<img  id="link" class="img-responsive selector-img" src="assets/images/link.png">
-					  		</div>
-					  		<div class="col-xs-4 col-md-3">
-				 				<img  id="spongebob" class="img-responsive selector-img" src="assets/images/spongebob.png">
-					  		</div>
-					  		<div class="col-xs-4 col-md-3">
-				 				<img  id="ratchet-clank" class="img-responsive selector-img" src="assets/images/ratchet-clank.png">
-					  		</div>
-					  	</div>
+				 		<div id="print-toon-field" class="panel-body"></div>
 					</div>
-				</div>
-
+				</div> <!-- toon field -->
 			</div>
 
-				<!-- Battle Field -->
-				<div class="row">
 
-					<div class="col-xs-12">
-						<div class="panel panel-default">
-							<div class="panel-body">
 
-							<div class="col-xs-4">
-				 				<img id="selected-img-player" class="img-responsive center-block alert alert-success" src="http://placehold.it/200x200">
-				 				<h5 id="selected-name-player" class="text-center hide-xs">#selected-name-player</h5></div>
-				 			</div>
-							<div class="col-xs-5 col-xs-offset-3">
-								<p>sdfsdfsdfsdfdsf</p>
+			<!-- Battlefield -->
+			<div id="battlefield" class="row hidden">
+				<div class="col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-body">
+			
+								<div class="row">
+									<div class="col-xs-4 text-center">
+											<button id="user-block-btn" type="button" class="btn btn-info block-btn">Block</button>
+											<button id="user-counter-btn" type="button" class="btn btn-warning counter-btn">Counter</button>
+											<button id="user-attack-btn" type="button" class="btn btn-danger attack-btn">Attack</button>
+									</div>
+									<div class="col-xs-4 col-xs-offset-2 text-center">
+											<button id="enemy-block-btn" type="button" class="btn btn-info block-btn">Block</button>
+											<button id="enemy-counter-btn" type="button" class="btn btn-warning counter-btn">Counter</button>
+											<button id="enemy-attack-btn" type="button" class="btn btn-danger attack-btn">Attack</button>
+									</div>
+								</div>
+
+							<div class="row vertical-align">
+								<div class="col-xs-4">
+					 				<img id="user-img" class="img-responsive center-block flip-img-h" src="http://placehold.it/200x200">
+					 				<div><h4 id="user-name" class="text-center">Name</h4></div>
+					 				<table class="table table-condensed text-center">
+					 					<tbody>
+					 						<tr>
+					 							<td><span class="badge"><h5 id="user-health">Health: XX</h5></span></td>
+					 							<td><span class="badge"><h5 id="user-defense">Defense: XX</h5></span></td>
+					 						</tr>
+					 						<tr>
+					 							<td><span class="badge"><h5 id="user-agility">Agility: XX</h5></span></td>
+					 							<td><span class="badge"><h5 id="user-strength">Strength: XX</h5></span></td>
+					 						</tr>
+					 					</tbody>
+					 				</table>
+					 			</div>
+								<div class="col-xs-6 col-xs-offset-2 vertical-align">
+									<div class="col-xs-8">
+										<img id="current-enemy-img" class="img-responsive center-block" src="http://placehold.it/200x200">
+						 				<div><h4 id="current-enemy-name" class="text-center">Name</h4></div>
+						 				<table class="table table-condensed text-center">
+						 					<tbody>
+						 						<tr>
+						 							<td><span class="badge"><h5 id="current-enemy-health">Health: XX</h5></span></td>
+						 							<td><span class="badge"><h5 id="current-enemy-defense">Defense: XX</h5></span></td>
+						 						</tr>
+						 						<tr>
+						 							<td><span class="badge"><h5 id="current-enemy-agility">Agility: XX</h5></span></td>
+						 							<td><span class="badge"><h5 id="current-enemy-strength">Strength: XX</h5></span></td>
+						 						</tr>
+						 					</tbody>
+						 				</table>
+						 			</div>
+									<div class="col-xs-4">
+										<div class="col-xs-12">	
+							 				<img id="enemy1-img" class="img-responsive center-block enemy-img" src="http://placehold.it/200x200">
+							 			</div>	
+							 			<div class="col-xs-12">	
+							 				<img id="enemy2-img" class="img-responsive center-block enemy-img" src="http://placehold.it/200x200">
+							 			</div>	
+							 			<div class="col-xs-12">	
+							 				<img id="enemy3-img" class="img-responsive center-block enemy-img" src="http://placehold.it/200x200">
+							 			</div>
+									</div>
+								</div>
 							</div>
-
 						</div>
 					</div>
-
-				</div> <!-- Battle Field -->
-
-
-
-			</div> <!-- Row -->
+				</div> 
+			</div> <!-- Battlefield -->
 
 		</div>	<!-- Container -->
 
 <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-<!-- Latest compiled and minified JavaScript -->
+<script src="assets/javascript/game.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-
-<script type="text/javascript">
-	
-	var selectedPlayer, enemy1, enemy2, enemy3;
-
-	var buzzLightyear = { name: "Buzz Lightyear", health: 68, attack: 67, counter: 69, src: ($('#buzz-lightyear').attr('src'))};
-	$('#buzz-lightyear').data('value',buzzLightyear);
-	var adamWest = { name: "Adam West", health: 31, attack: 68, counter: 20, src: ($('#adam-west').attr('src'))};
-	$('#adam-west').data('value',adamWest);
-	var pikachu = { name: "Pikachu", health: 47, attack: 71, counter: 71, src: ($('#pikachu').attr('src'))};
-	$('#pikachu').data('value',pikachu);
-	var simba = { name: "Simba", health: 61, attack: 50, counter: 50, src: ($('#simba').attr('src'))};
-	$('#simba').data('value',simba);
-	var yoshi = { name: "Yoshi", health: 49, attack: 49, counter: 49, src: ($('#yoshi').attr('src'))};
-	$('#yoshi').data('value',yoshi);
-	var captainAmerica = { name: "Captain America", health: 77, attack: 77, counter: 77, src: ($('#captain-america').attr('src')) };
-	$('#captain-america').data('value',captainAmerica);
-	var bowser = { name: "Bowser", health: 70, attack: 70, counter: 39, src: ($('#bowser').attr('src'))};
-	$('#bowser').data('value',bowser);
-	var bender = { name: "Bender", health: 71, attack: 70, counter: 23, src: ($('#bender').attr('src'))};
-	$('#bender').data('value',bender);
-	var archer = { name: "Archer", health: 50, attack: 72, counter: 61, src: ($('#archer').attr('src'))};
-	$('#archer').data('value',archer);
-	var link = { name: "Link", health: 61, attack: 68, counter: 68, src: ($('#link').attr('src'))};
-	$('#link').data('value',link);
-	var spongebob = { name: "Spongebob", health: 83, attack: 49, counter: 27, src: ($('#spongebob').attr('src'))};
-	$('#spongebob').data('value',spongebob);
-	var ratchetClank = { name: "Ratchet and Clank", health: 60, attack: 30, counter: 74, src: ($('#ratchet-clank').attr('src')) };
-	$('#ratchet-clank').data('value',ratchetClank);
-	var toonArray = [ buzzLightyear, adamWest, pikachu, simba, yoshi, captainAmerica, bowser, bender, archer, link, spongebob, ratchetClank ];
-
-	// print image into the player info div when a player card is clicked   
-    $('.selector-img').click(function(){
-    	selectedPlayer = $(this).data('value');
-        $('#show-player-img').attr( 'src', selectedPlayer.src );
-        $('#show-player-name').html(selectedPlayer.name);
-        $('#show-player-health').html(selectedPlayer.health);
-        $('#show-player-attack').html(selectedPlayer.attack);
-        $('#show-player-counter').html(selectedPlayer.counter);  		
-    })
-
-
-    $('#show-player').click(function(){
-        $('#selected-img-player').attr( 'src', selectedPlayer.src );
-        $('#selected-name-player').html(selectedPlayer.name);
-        enemy1 = toonArray[Math.floor(Math.random()*toonArray.length)];
-        $('#selected-name-enemy-1').html(enemy1.name);
-        $('#selected-img-enemy-1').attr( 'src', enemy1.src );
-        enemy2 = toonArray[Math.floor(Math.random()*toonArray.length)];
-        $('#selected-name-enemy-2').html(enemy2.name);
-        $('#selected-img-enemy-2').attr( 'src', enemy2.src );
-        enemy3 = toonArray[Math.floor(Math.random()*toonArray.length)]; 	
-        $('#selected-name-enemy-3').html(enemy3.name);
-        $('#selected-img-enemy-3').attr( 'src', enemy3.src );
-
-    })
-
-
-
-    
-
-
-
-
-
-
-
-				 			// <div class="col-xs-3">
-				 			// 	<img id="select-img-player" class="img-responsive center-block alert alert-success" src="http://placehold.it/200x200">
-				 			// 	<h5 id="select-name-player" class="text-center hide-xs">#select-name-player</h5>
-					  	// 	</div>
-
-
-$(document).ready(function(){
-
-
-
-})
-
-
-
-</script>
 
 		<!-- Footer -->	
 		<footer class="footer">

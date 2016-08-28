@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Test</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="assets/css/style.css">	
+ 	</head>
+ 	<body>
+
+		<!-- Container -->
+		<div class="container-fluid">
+			
+			<!-- Header -->
+			<div class="page-header text-center">
+    			<h1>Combat RPG</h1>
+  			</div>	<!-- Header -->
+			
+			<!-- MSG Box -->
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="panel-group">
+						<div class="panel panel-default">
+					 		<div class="panel-body">
+					 			<h4 id="msg-box" class="text-center">#msg-box</h4>
+						  	</div>
+						</div>
+					</div>
+				</div>
+			</div> 	<!-- MSG Box -->
+			
+			<div id="selector-box" class="row">
+				<!-- toon stats -->
+				<div class="col-xs-12 col-md-3">
+					<div class="panel panel-default">
+				 		<div class="panel-body">
+				 			<div class="col-xs-6 col-md-12">
+				 				<img id="print-toon-img" class="img-responsive center-block" src="http://placehold.it/200x200">
+				 			</div>
+				 			<div class="col-xs-6 col-md-12">
+					 			<ul class="list-group">
+					 				<li id="print-toon-name" class="list-group-item text-center">
+					 				</li>
+					 				<li class="list-group-item">
+					 					<span id="print-toon-health" class="badge"></span>
+					 					Health:
+					 				</li>
+					 				<li class="list-group-item">
+					 					<span id="print-toon-defense" class="badge"></span>
+					 					Defense:
+					 				</li>
+					 				<li class="list-group-item">
+					 					<span id="print-toon-attack" class="badge"></span>
+					 					Attack:
+					 				</li>
+					 				<li class="list-group-item">
+					 					<span id="print-toon-counter" class="badge"></span>
+					 					Counter:
+					 				</li>
+					 			</ul>
+					 			<button id="start-game" class="btn btn-primary btn-block"><span class="glyphicon"></span>Start Game</button>
+				 			</div>
+					  	</div>
+					</div>
+				</div>
+				<!-- toon field -->
+				<div class="col-xs-12 col-md-9">
+					<div class="panel panel-default">
+				 		<div id="print-toon-field" class="panel-body"></div>
+					</div>
+				</div> <!-- toon field -->
+			</div>
+
+			<!-- Battlefield -->
+			<div id="battlefield" class="row hidden">
+				<div class="col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="row vertical-align">
+								<div class="col-xs-4">
+					 				<img id="user-img" class="img-responsive center-block" src="http://placehold.it/200x200">
+					 				<div id="user-name" class="text-center"><h4>Name</h4></div>
+					 				<div id="user-health" class="text-center"><h5>Health: XX</h5></div>
+					 				<div id="user-attack" class="text-center"><h5>Attack: XX</h5></div>
+					 				<div id="user-counter" class="text-center"><h5>Counter: XX</h5></div>
+					 			</div>
+								<div class="col-xs-6 col-xs-offset-2 vertical-align">
+									<div class="col-xs-8">
+										<img id="current-enemy-img" class="img-responsive center-block" src="http://placehold.it/200x200">
+						 				<div id="current-enemy-name"><h4>Name</h4></div>
+						 				<div id="current-enemy-health"><h5>Health: XX</h5></div>
+						 				<div id="current-enemy-attack"><h5>Attack: XX</h5></div>
+						 				<div id="current-enemy-counter"><h5>Counter: XX</h5></div>
+						 			</div>
+									<div class="col-xs-4">
+										<div class="col-xs-12">	
+							 				<img id="enemy1-img" class="img-responsive center-block enemy-img" src="http://placehold.it/200x200">
+							 			</div>	
+							 			<div class="col-xs-12">	
+							 				<img id="enemy2-img" class="img-responsive center-block enemy-img" src="http://placehold.it/200x200">
+							 			</div>	
+							 			<div class="col-xs-12">	
+							 				<img id="enemy3-img" class="img-responsive center-block enemy-img" src="http://placehold.it/200x200">
+							 			</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> 
+			</div> <!-- Battlefield -->
+
+		</div>	<!-- Container -->
+		
+
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript">
+
+
+	// declare variables 
+		var userToon, enemy1, enemy2, enemy3, currentEnemy, relativeCounter;
+		var toonArray = [];
+
+	function toon(name, health, attack, defense, counter) {
+
+	    // build variable
+	    this.name = name;
+	    this.health = health;
+	    this.attack = attack;
+	    this.defense = defense;
+	    this.counter = counter;
+	    this.src = ("assets/images/" + name.replace(/ /g,"_") + ".png" ).toLowerCase()
+
+	    // create name of id for use in HTML
+	    this.id = (name.replace(/ /g,"-")).toLowerCase();
+
+		// create the naming convention for javascript variables
+	    function camelize(str) {
+			return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
+				return index == 0 ? letter.toLowerCase() : letter.toUpperCase();
+			}).replace(/\s+/g, '');
+		}
+	    this.var = (camelize(name));
+
+	    // load toon objects into array
+	    toonArray.push(this);
+
+	    // print toon into the loading toon-field
+	    $('#print-toon-field').append('<div class="col-xs-4 col-md-3 col-lg-2"><img id="' + this.id + '" class="img-responsive toon-field-img" src="' + this.src + '"></div>')
+		// load toon value into div with toon.id 
+	    $("#" + this.id).data('value',this);
+	}
+	// list of toons
+		var buzzLightyear = new toon("Buzz Lightyear", 68, 67, 69, 12); 
+		var adamWest = new toon("Adam West", 31, 68, 20, 12);
+		var pikachu = new toon("Pikachu", 47, 71, 71, 12);
+		var simba = new toon("Simba", 61, 50, 50, 12);
+		var yoshi = new toon("Yoshi", 49, 49, 49, 12);
+		var captainAmerica =  new toon("Captain America", 77, 77, 77, 12);
+		var bowser = new toon("Bowser", 70, 70, 39, 12);
+		var bender = new toon("Bender", 71, 70, 23, 12);
+		var archer = new toon("Archer", 50, 72, 61, 12);
+		var link = new toon("Link", 61, 68, 68, 12);
+		var spongebob = new toon("Spongebob", 83, 49, 27, 12);
+		var ratchetAndClank = new toon("Ratchet and Clank", 60, 30, 74, 12);
+
+	console.log(toonArray);
+
+	// print image into the player info div when a player card is clicked   
+    $('.toon-field-img').click(function(){
+    	userToon = $(this).data('value');
+        $('#print-toon-img').attr( 'src', userToon.src );
+        $('#print-toon-name').html(userToon.name);
+        $('#print-toon-health').html(userToon.health);
+        $('#print-toon-attack').html(userToon.attack);
+        $('#print-toon-defense').html(userToon.defense);
+        $('#print-toon-counter').html(userToon.counter);  		
+    })
+
+    // print into matchup box
+    $('#start-game').click(function(){
+    	// display battlefield
+    	$('#battlefield').removeClass('hidden');
+    	// print user and enemy field
+        $('#user-img').attr( 'src', userToon.src );
+        $('#user-name').html(userToon.name);
+        enemy1 = toonArray[Math.floor(Math.random()*toonArray.length)];
+        $('#enemy1-name').html(enemy1.name);
+        $('#enemy1-img').attr( 'src', enemy1.src );
+        enemy2 = toonArray[Math.floor(Math.random()*toonArray.length)];
+        $('#enemy2-name').html(enemy2.name);
+        $('#enemy2-img').attr( 'src', enemy2.src );
+        enemy3 = toonArray[Math.floor(Math.random()*toonArray.length)]; 	
+        $('#enemy3-name').html(enemy3.name);
+        $('#enemy3-img').attr( 'src', enemy3.src );
+        // hide the selector window
+        $('#selector-box').addClass('hidden');
+    })
+
+
+    // select enemy to battle
+    $('enemy-img').click(function(){
+    	$('#current-enemy-img').data('value', $(this).data('value') );
+        $('#current-enemy-img').attr( 'src', this.src );
+        currentEnemy = $('#current-img-enemy').data('value');
+        $('#current-enemy-name').html('<h4>' + currentEnemy.name + '</h4>');
+        $('#current-enemy-health').html('<h5>Health: ' + currentEnemy.health + '</h5>');
+        $('#current-enemy-attack').html('<h5>Attack: ' + currentEnemy.attack + '</h5>');
+        $('#current-enemy-counter').html('<h5>Counter: ' + currentEnemy.counter + '</h5>');
+    })
+</script>
+
+		<!-- Footer -->	
+		<footer class="footer">
+		    <div class="container">
+		   		<p class="text-muted text-center">&copy; Copyright 2016 Mark Q Schwanda</p>
+			</div>
+		</footer>
+
+	</body>
+</html>
+
