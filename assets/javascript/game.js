@@ -1,25 +1,31 @@
 	// declare variables 
-		var userToon, userState, enemyState, userPower, enemyPower, userDodge, userCounter, userBlock, enemy1, enemy2, enemy3, currentEnemy, relativeCounter;
+		var userToon, userState, enemyState, userPower, enemyPower, userDodge, userCounter, userBlock, enemy1, enemy2, enemy3, currentEnemy;
 		var toonArray = [];
+		// lock buttons until enemy is selected
 		var buttonsActive = false;
+		// allows enemy to be selected
 		var canSelectEnemy = true;
 		var deadEnemy = 0;
 
 	    function enemyDecision() {
-    	var random = Math.floor(Math.random()*5);
-    	if (random == 3) {
-    		enemyState = 3;
-    		console.log("attack");
-    	}
-    	if (random == 2) {
-    		enemyState = 2;
-    		console.log("counter");
-    	}
-    	if (random == 1) {
-    		enemyState = 1;
-    		console.log("block");
-    	}
-    }
+	    	var random = 3;
+	    	var random = Math.floor(Math.random()*5);
+	    	if (random >= 3) {
+	    		enemyState = 3;
+	    		enemyPower = currentEnemy.strength;
+	    		console.log("attack");
+	    	}
+	    	if (random == 2) {
+	    		enemyState = 2;
+	    		enemyPower = currentEnemy.counter;
+	    		console.log("counter");
+	    	}
+	    	if (random == 1) {
+	    		enemyState = 1;
+	    		enemyPower = currentEnemy.block;
+	    		console.log("block");
+	    	}
+	    }
 
     function endTurn() {
     	buttonsActive = true;
@@ -44,25 +50,46 @@
     function fight() {
     	enemyDecision();
 
-    	// if one toon attacks
-    	if ( (userState >= 3 && enemyState < 3) || (enemyState >= 3 && userState < 3) ) {
+    	// if enemy toon attacks
+    	if (enemyState >= 3 && userState < 3) {
+		    if ((enemyPower - userPower) > 0) {
+	    		userToon.health = userToon.health - (enemyPower - userPower);
+	    		$('#user-health').html('Health: ' + userToon.health);	
+			}
+		    if (((userPower - enemyPower) > 0) && (userState != 1)) {
+	    		currentEnemy.health = currentEnemy.health - (userPower - enemyPower);
+	    		$('#current-enemy-health').html('Health: ' + currentEnemy.health);	
+			}
+			if ((userState == 1) && ((enemyPower - userPower) <= 0)){
+				alert("Block");
+			}
+		}
+		// if user toon attacks
+    	if (userState >= 3 && enemyState < 3) {
 		    if ((userPower - enemyPower) > 0) {
 	    		currentEnemy.health = currentEnemy.health - (userPower - enemyPower);
 	    		$('#current-enemy-health').html('Health: ' + currentEnemy.health);	
 			}
-			if ((enemyPower - userPower) > 0) {
+			if (((enemyPower - userPower) > 0) && (enemyState != 1)) {
 	    		userToon.health = userToon.health - (enemyPower - userPower);
 	    		$('#user-health').html('Health: ' + userToon.health);	
+			}
+			if ((enemyState == 1) && ((enemyPower - userPower) <= 0)){
+				alert("Block");
 			}
 		}
 		// if both toons attack
 		if (userState >= 3 && enemyState >= 3) {
-			userToon.health = userToon.health - enemyPower;
-	    	$('#user-health').html('Health: ' + userToon.health);
-	    	currentEnemy.health = currentEnemy.health - userPower;
-	    	$('#current-enemy-health').html('Health: ' + currentEnemy.health);	
+    		currentEnemy.health = currentEnemy.health - userPower;
+	    	$('#current-enemy-health').html('Health: ' + currentEnemy.health);
+	    	// if enemy is alive allow to attack
+	    	if (currentEnemy.health > 0) {
+				userToon.health = userToon.health - enemyPower;
+		    	$('#user-health').html('Health: ' + userToon.health);	
 
-		}
+	    	}
+	    }
+
 		// if no toons attack
 		if (userState < 3 && enemyState < 3) {
 			alert("NO ATTACK");	
@@ -99,16 +126,16 @@
 	    $("#" + this.id).data('value',this);
 	}
 	// list of toons
-		var buzzLightyear = new toon("Buzz Lightyear", 60, 60, 50, 55); 
-		var adamWest = new toon("Adam West", 60, 60, 40, 60);
-		var pikachu = new toon("Pikachu", 55, 75, 35, 50);
-		var simba = new toon("Simba", 50, 55, 55, 40);
-		var yoshi = new toon("Yoshi", 50, 55, 55, 40);
-		var captainAmerica =  new toon("Captain America", 75, 75, 75, 75);
-		var bowser = new toon("Bowser", 65, 25, 65, 65);
-		var bender = new toon("Bender", 45, 40, 90, 45);
-		var archer = new toon("Archer", 40, 50, 50, 40);
-		var link = new toon("Link", 55, 55, 55, 55);
+		var buzzLightyear = new toon("Buzz Lightyear", 600, 60, 50, 55); 
+		var adamWest = new toon("Adam West", 600, 60, 40, 60);
+		var pikachu = new toon("Pikachu", 550, 75, 35, 50);
+		var simba = new toon("Simba", 500, 55, 55, 40);
+		var yoshi = new toon("Yoshi", 500, 55, 55, 40);
+		var captainAmerica =  new toon("Captain America", 750, 75, 75, 75);
+		var bowser = new toon("Bowser", 650, 25, 65, 65);
+		var bender = new toon("Bender", 450, 40, 90, 45);
+		var archer = new toon("Archer", 400, 50, 50, 40);
+		var link = new toon("Link", 550, 55, 55, 55);
 		var spongebob = new toon("Spongebob", 60, 30, 30, 55);
 		var ratchetAndClank = new toon("Ratchet and Clank", 50, 70, 35, 50);
 
@@ -178,7 +205,7 @@
     	if (buttonsActive == true){
     		buttonsActive = false;
     		userState = 3;
-    		userPower = userToon.attack;
+    		userPower = userToon.strength;
     		fight();
     		
     	}
@@ -201,7 +228,6 @@
     		fight();
     	}
     })
-
 
 
 
